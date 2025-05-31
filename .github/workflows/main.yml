@@ -1,0 +1,19 @@
+name: Develop Branch Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  pull-repo-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Create Target Directory
+        run: mkdir -p pulled-content
+
+      - name: Copy Repository Content
+        run: cp -r . pulled-content/
